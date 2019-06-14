@@ -67,8 +67,6 @@ class Stepper extends Component {
       React.Children.toArray(this.props.children),
     )
 
-    console.log('>> Stepper @ dev github')
-
     this.state = {
       activeStep: this.props.activeStep || this.steps[0],
     }
