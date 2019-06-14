@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 import React, {Component} from 'react'
 import {createMemoryHistory} from 'history'
 import {isEqual} from 'lodash'
-=======
-import React, { Component } from 'react'
-import { createMemoryHistory } from 'history'
-import { isEqual } from 'lodash'
->>>>>>> 9d38b5a7f3742a516a70c1e5c54cce7c62488fdf
 import PropTypes from 'prop-types'
 
 const StepperContext = React.createContext()
@@ -27,13 +21,8 @@ class Stepper extends Component {
 
     if (this.previousStep != null) {
       const previousStep = this.previousStep
-<<<<<<< HEAD
       this.sendHistory(previousStep)
       this.setState({activeStep: previousStep})
-=======
-      this.history.push(this.stepToPath(previousStep))
-      this.setState({ activeStep: previousStep })
->>>>>>> 9d38b5a7f3742a516a70c1e5c54cce7c62488fdf
       onChange(previousStep, this.steps)
     }
   }
@@ -47,13 +36,8 @@ class Stepper extends Component {
     }
 
     const nextStep = this.nextStep
-<<<<<<< HEAD
     this.sendHistory(nextStep)
     this.setState({activeStep: nextStep})
-=======
-    this.history.push(this.stepToPath(nextStep))
-    this.setState({ activeStep: nextStep })
->>>>>>> 9d38b5a7f3742a516a70c1e5c54cce7c62488fdf
     onChange(nextStep, this.steps)
   }
 
@@ -65,7 +49,6 @@ class Stepper extends Component {
     return step || this.state.step
   }
 
-<<<<<<< HEAD
   childrenToStepList(arrChildren) {
     return arrChildren.map(child => child.props.stepName)
   }
@@ -83,15 +66,6 @@ class Stepper extends Component {
     this.steps = this.childrenToStepList(
       React.Children.toArray(this.props.children),
     )
-=======
-  childrenToStepList(arrChildren){
-    return arrChildren.map(child => child.props.stepName)
-  }
-
-  constructor(props) {
-    super(props)
-    this.steps = this.childrenToStepList(React.Children.toArray(this.props.children))
->>>>>>> 9d38b5a7f3742a516a70c1e5c54cce7c62488fdf
 
     this.state = {
       activeStep: this.props.activeStep || this.steps[0],
@@ -108,15 +82,9 @@ class Stepper extends Component {
     this.unlisten()
   }
 
-<<<<<<< HEAD
   componentWillReceiveProps({children}) {
     const newSteps = React.Children.toArray(children)
     if (!isEqual(this.steps, newSteps)) {
-=======
-  componentWillReceiveProps({ children }){
-    const newSteps = React.Children.toArray(children)
-    if(!isEqual(this.steps, newSteps)){
->>>>>>> 9d38b5a7f3742a516a70c1e5c54cce7c62488fdf
       this.steps = this.childrenToStepList(newSteps)
     }
   }
