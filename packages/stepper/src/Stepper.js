@@ -45,7 +45,7 @@ class Stepper extends Component {
 
   pathToStep = pathname => {
     const pathStep = pathname.replace(`${this.props.basename}/`, '/')
-    const [step] = this.steps.filter(stepName => stepName === pathStep)
+    const [step] = this.steps.filter(stepName => stepName.replace(/^\//g, '') === pathStep.replace(/^\//g, ''))
     return step || this.state.step
   }
 
@@ -67,9 +67,7 @@ class Stepper extends Component {
       React.Children.toArray(this.props.children),
     )
 
-    this.state = {
-      activeStep: this.props.activeStep || this.steps[0],
-    }
+    this.state = { activeStep: this.props.activeStep || this.steps[0] }
 
     this.history = props.history || createMemoryHistory()
     this.sendHistory(this.state.activeStep, 'replace')
